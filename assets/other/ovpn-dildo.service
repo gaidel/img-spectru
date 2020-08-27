@@ -1,0 +1,14 @@
+[Unit]
+Description=OVPN
+After=network.target
+Wants=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/sbin/openvpn /etc/openvpn/client/urpylka-dildo.ovpn
+TimeoutStopSec=3s
+Restart=always
+RestartSec=3s
+
+[Install]
+WantedBy=multi-user.target
