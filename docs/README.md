@@ -1,9 +1,7 @@
-# img-builder
+# img-spectru
 
-`img-builder` is a software for preparing Raspbian OS images. It based on [`img-tool`](https://github.com/urpylka/img-tool). It works by an incremental operations inside an initial image.
+`img-spectru` is a software for automatically building Raspbian OS images with hyperspectral camera recording tools. It based on [`img-tool`](https://github.com/urpylka/img-tool).
 
-## Quick start
+## Usage
 
-1. Fork it
-2. Change `build.sh`, `assets` dir (as you want).
-3. Run `./build.sh`
+Run `./build.sh`
