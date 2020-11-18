@@ -16,7 +16,7 @@ set -e # Exit immidiately on non-zero result
 source img-tool
 
 ###################################################################################################
-
+PROJECT="HSPR"
 # Directories inside docker container
 MNT_DIR="/mnt"
 IMAGES_DIR="\${MNT_DIR}/images"; [[ ! -d \${IMAGES_DIR} ]] && mkdir \${IMAGES_DIR}
@@ -45,10 +45,10 @@ COPY '/make-once.sh' '/root/'
 EXEC '/make-init.sh' "\${PROJECT}" "\${IMAGE_VERSION}" "\${IMAGE_SOURCE}"
 EXEC '/make-install.sh'
 
-COPY '/network/interfaces.conf' '/etc/network/interfaces'
-COPY '/network/iptables.sh' '/root/'
+# COPY '/network/interfaces.conf' '/etc/network/interfaces' # Петров, 18.11.2020 - отключить раздачу инета
+# COPY '/network/iptables.sh' '/root/'
 COPY '/network/hostapd.conf' '/etc/hostapd/hostapd.conf'
-COPY '/network/dnsmasq.conf' '/etc/dnsmasq.conf'
+# COPY '/network/dnsmasq.conf' '/etc/dnsmasq.conf'
 
 EXEC '/make-setup.sh'
 

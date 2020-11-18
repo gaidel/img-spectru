@@ -4,7 +4,7 @@ set -e # Exit immidiately on non-zero result
 
 PROJECT=$(cat /etc/builder | grep "image project" | awk -F ': ' '{print $2}')
 HOSTNAME="${PROJECT}-$(head -c 100 /dev/urandom | xxd -ps -c 100 | sed -e "s/[^0-9]//g" | cut -c 1-4)"
-HOSTNAME=$(echo ${HOSTNAME} | tr '[:upper:]' '[:lower:]')
+#HOSTNAME=$(echo ${HOSTNAME} | tr '[:upper:]' '[:lower:]')
 
 echo "> Setting up hostname to ${HOSTNAME}"
 hostnamectl set-hostname ${HOSTNAME}
@@ -13,7 +13,7 @@ sed -i 's/127\.0\.1\.1.*/127.0.1.1\t'${HOSTNAME}' '${HOSTNAME}'.local/g' /etc/ho
 
 echo "> Setting up hostapd"
 sed -i "s/ssid=HOSTAPD/ssid=${HOSTNAME}/g" /etc/hostapd/hostapd.conf
-sed -i "s/wpa_passphrase=PASSWORD/wpa_passphrase=${HOSTNAME}/g" /etc/hostapd/hostapd.conf
+sed -i "s/wpa_passphrase=PASSWORD/wpa_passphrase=hyperspectr/g" /etc/hostapd/hostapd.conf
 echo "SSID and PSK were set to ${HOSTNAME}"
 # TODO: Add 'change wifi-password' to /etc/motd
 
