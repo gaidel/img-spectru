@@ -41,5 +41,11 @@ systemctl disable hciuart.service
 echo "> Turning on v4l2 driver"
 [[ `grep -q "^bcm2835-v4l2" /etc/modules` ]] || printf "bcm2835-v4l2\n" >> /etc/modules;
 
+echo "> Unblocking rfkill (remove files)"
+# rfkill unblock all # - так не работает
+# http://linuxshare.ru/docs/distro/redhat/el6/Power_Management_Guide/RFKill.html
+# https://www.raspberrypi.org/forums/viewtopic.php?t=146198
+rm /var/lib/systemd/rfkill/*
+
 echo "> Removing once-script"
 rm /root/make-once.sh
