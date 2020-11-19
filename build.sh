@@ -16,7 +16,7 @@ set -e # Exit immidiately on non-zero result
 source img-tool
 
 ###################################################################################################
-PROJECT="HSPR"
+
 # Directories inside docker container
 MNT_DIR="/mnt"
 IMAGES_DIR="\${MNT_DIR}/images"; [[ ! -d \${IMAGES_DIR} ]] && mkdir \${IMAGES_DIR}
@@ -31,9 +31,8 @@ IMAGE_VERSION="\$(get_repo_ver \${MNT_DIR})"
 PROJECT="\${PROJECT:-"builder"}"
 IMAGE_NAME="\${PROJECT}-\${IMAGE_VERSION}.img"
 IMAGE_PATH="\${IMAGES_DIR}/\${IMAGE_NAME}"
-#IMAGE_SOURCE="https://downloads.raspberrypi.org/raspbian_lite/images/raspbian_lite-2020-02-14/2020-02-13-raspbian-buster-lite.zip"
-#IMAGE_SOURCE="https://downloads.raspberrypi.org/raspios_lite_arm64/images/raspios_lite_arm64-2020-08-24/2020-08-20-raspios-buster-arm64-lite.zip"
-IMAGE_SOURCE="https://downloads.raspberrypi.org/raspios_lite_armhf/images/raspios_lite_armhf-2020-08-24/2020-08-20-raspios-buster-armhf-lite.zip"
+IMAGE_SOURCE="https://downloads.raspberrypi.org/raspbian_lite/images/raspbian_lite-2020-02-14/2020-02-13-raspbian-buster-lite.zip"
+
 ###################################################################################################
 
 LOAD \${IMAGE_SOURCE}
@@ -45,10 +44,10 @@ COPY '/make-once.sh' '/root/'
 EXEC '/make-init.sh' "\${PROJECT}" "\${IMAGE_VERSION}" "\${IMAGE_SOURCE}"
 EXEC '/make-install.sh'
 
-# COPY '/network/interfaces.conf' '/etc/network/interfaces' # Петров, 18.11.2020 - отключить раздачу инета
-# COPY '/network/iptables.sh' '/root/'
+COPY '/network/interfaces.conf' '/etc/network/interfaces'
+COPY '/network/iptables.sh' '/root/'
 COPY '/network/hostapd.conf' '/etc/hostapd/hostapd.conf'
-# COPY '/network/dnsmasq.conf' '/etc/dnsmasq.conf'
+COPY '/network/dnsmasq.conf' '/etc/dnsmasq.conf'
 
 EXEC '/make-setup.sh'
 

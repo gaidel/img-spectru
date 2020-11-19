@@ -4,4 +4,4 @@
 
 ## Usage
 
-Run `sudo ./build.sh`
+Run `./build.sh`
