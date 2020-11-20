@@ -35,7 +35,8 @@ packs=(); +(){ packs=(${packs[@]} ${@}); }
 # + nmap
 + git
 + vim nano
-+ tcpdump ltrace lsof
++ tcpdump lsof
+# + ltrace # E: Unable to locate package ltrace - на arm64
 # + libpoco-dev
 + build-essential cmake
 # + ntpdate
