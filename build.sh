@@ -44,6 +44,7 @@ SIZE 4000000000
 COPY '/make-once.sh' '/root/'
 EXEC '/make-init.sh' "\${PROJECT}" "\${IMAGE_VERSION}" "\${IMAGE_SOURCE}"
 EXEC '/make-install.sh'
+EXEC '/install-ROS.sh'
 
 # COPY '/network/interfaces.conf' '/etc/network/interfaces' # Петров, 18.11.2020 - отключить раздачу инета
 # COPY '/network/iptables.sh' '/root/'
