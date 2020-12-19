@@ -3,7 +3,8 @@
 set -e # Exit immidiately on non-zero result
 
 echo "> Installing repo signing key"
-curl http://repo.smirart.ru/repo_signing.key 2> /dev/null | apt-key add -
+# curl http://repo.smirart.ru/repo_signing.key 2> /dev/null | apt-key add -
+curl http://repo.urpylka.com/repo_signing.key 2> /dev/null | apt-key add - || true
 
 # ========== Another method to add repo signing key ==========
 # https://yandex.ru/turbo?text=https%3A%2F%2Fcyber01.ru%2Fkak-ispravit-usr-bin-dirmngr-no-such-file-or-directory%2F
@@ -18,12 +19,14 @@ curl http://repo.smirart.ru/repo_signing.key 2> /dev/null | apt-key add -
 # pkill -9 -f dirmngr || true
 # ============================================================
 
-echo "> Adding repo address"
-echo "deb http://repo.smirart.ru/clever/ stretch main" > /etc/apt/sources.list.d/clever.list
+# TODO: Здесь тоже репы адрес на новый поменять
+# echo "> Adding repo address"
+# echo "deb http://repo.smirart.ru/clever/ stretch main" > /etc/apt/sources.list.d/clever.list
 
 ##################################################################################################
 
 echo "> Collecting repositories indexes"
+echo "$0 > Collecting repositories indexes: `date`" >> /home/pi/logsborki.txt
 apt update
 
 echo "> Collecting packages to bash array"
@@ -54,3 +57,5 @@ echo "> Installing packages: ${packs[@]}"
 apt install --no-install-recommends -y ${packs[@]} \
 && echo "Everything was installed!" \
 || (echo "Some packages weren't installed!"; exit 1)
+
+echo "$0 > Packages installed: `date`" >> /home/pi/logsborki.txt
