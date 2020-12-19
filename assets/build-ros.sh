@@ -44,11 +44,19 @@ rosdep install -y --from-paths src --ignore-src --rosdistro noetic -r --os=debia
 echo "ROS noetic prepared OK!"
 echo "$0 > ROS noetic prepared OK!: `date`" >> /home/pi/logsborki.txt
 
+cd src
+git clone https://github.com/GT-RAIL/async_web_server_cpp
+git clone https://github.com/RobotWebTools/web_video_server
+cd ..
+echo "ROS web_video_server cloned OK!"
+echo "$0 > ROS web_video_server cloned!: `date`" >> /home/pi/logsborki.txt
+
 # здесь я пропустил увеличение swap файла. Будет ли без этого работать? Или это сделать где-то раньше?
 # руками ставил 1024 Мб
 # sudo dphys-swapfile swapoff
 # sudoedit /etc/dphys-swapfile
 # sudo dphys-swapfile setup
+# sudo dphys-swapfile swapon
 
 echo "> Catkin make  ROS noetic"
 echo "$0 > Catkin make  ROS noetic: `date`" >> /home/pi/logsborki.txt
