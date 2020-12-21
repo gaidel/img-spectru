@@ -37,3 +37,13 @@ apt install nodejs -y
 
 echo "$0 > nginx, nodejs installed OK : `date`"
 echo "$0 > nginx, nodejs OK : `date`" >> /home/pi/logsborki.txt
+
+echo "$0 > Start to install python3 dependencies : `date`"
+echo "$0 > Start to install python3 dependencies : `date`" >> /home/pi/logsborki.txt
+
+cd /home/pi
+apt-get install -y libatlas-base-dev
+pip3 install -r requirements.txt
+
+echo "$0 > Start to install python3 dependencies installed OK : `date`"
+echo "$0 > Start to install python3 dependencies installed OK : `date`" >> /home/pi/logsborki.txt
