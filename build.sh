@@ -56,7 +56,7 @@ COPY '/network/hostapd.conf' '/etc/hostapd/hostapd.conf'
 EXEC '/make-setup.sh'
 
 COPY '/pylon/pylon_6.1.3.20159-deb0_armhf.deb' '/home/pi/pylon/pylon_6.1.3.20159-deb0_armhf.deb'
-EXEC 'install-tcam.sh'
+EXEC '/install-tcam.sh'
 
 SIZE \$(SIZE | grep "IMG_MIN_SIZE" | cut -b 15-)
 
