@@ -42,7 +42,7 @@ echo "$0 > Start to install python3 dependencies : `date`"
 echo "$0 > Start to install python3 dependencies : `date`" >> /home/pi/logsborki.txt
 
 cd /home/pi
-apt-get install -y libatlas-base-dev
+apt-get install -y libatlas-base-dev  python3-rpi.gpio
 pip3 install -r requirements.txt
 
 echo "$0 > Start to install python3 dependencies installed OK : `date`"
