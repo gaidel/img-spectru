@@ -5,6 +5,9 @@ set -e # Exit immidiately on non-zero result
 echo "> Installing repo signing key"
 # curl http://repo.smirart.ru/repo_signing.key 2> /dev/null | apt-key add -
 curl http://repo.urpylka.com/repo_signing.key 2> /dev/null | apt-key add - || true
+# add COEX opencv
+curl http://deb.coex.tech/aptly_repo_signing.key 2> /dev/null | apt-key add -
+echo "deb http://deb.coex.tech/opencv3 buster main" > /etc/apt/sources.list.d/opencv3.list
 
 # ========== Another method to add repo signing key ==========
 # https://yandex.ru/turbo?text=https%3A%2F%2Fcyber01.ru%2Fkak-ispravit-usr-bin-dirmngr-no-such-file-or-directory%2F
