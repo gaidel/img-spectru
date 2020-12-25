@@ -7,6 +7,7 @@ echo "$0 > Start TISCAM install: `date`" >> /home/pi/logsborki.txt
 cd /home/pi/
 git clone https://github.com/TheImagingSource/tiscamera.git
 cd tiscamera
+git checkout v-tiscamera-0.12.0
 ./scripts/install-dependencies.sh --compilation --runtime --yes --no-update
 mkdir build
 cd build
