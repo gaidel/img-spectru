@@ -87,6 +87,9 @@ source /opt/ros/noetic/setup.bash
 # source /home/pi/hspr_ws/devel/setup.bash # - это потом раскомментим
 EOF
 
+# enable roscore service
+systemctl enable roscore
+
 # ? как потом исходники и всё лишнее удалить? нужны же только исполняемые файлы ????
 echo "ROS catkin make OK!"
 echo "$0 > ROS catkin make OK!: `date`" >> /home/pi/logsborki.txt
