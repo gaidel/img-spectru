@@ -23,6 +23,7 @@ echo "$0 > Start BASLER install: `date`" >> /home/pi/logsborki.txt
 
 cd /home/pi/pylon
 #apt-get install -f -y ./pylon_6.1.3.20159-deb0_armhf.deb
+dpkg -i pylon_6.1.3.20159-deb0_armhf.deb
 curl 'https://github.com/basler/pypylon/releases/download/1.6.0/pypylon-1.6.0-cp37-cp37m-linux_armv7l.whl' -O -L 
 pip3 install pypylon-1.6.0-cp37-cp37m-linux_armv7l.whl
 echo "$0 > BASLER installed OK : `date`"
